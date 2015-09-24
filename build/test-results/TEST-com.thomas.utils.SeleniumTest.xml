@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.thomas.utils.SeleniumTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-09-24T00:48:01" hostname="yes4me" time="18.653">
+  <properties/>
+  <testcase name="testExamples" classname="com.thomas.utils.SeleniumTest" time="18.653"/>
+  <system-out><![CDATA[testExamples
+DONE
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
