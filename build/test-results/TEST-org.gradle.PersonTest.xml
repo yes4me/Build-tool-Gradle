@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.gradle.PersonTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2015-12-03T00:55:32" hostname="yes4me" time="0.013">
+  <properties/>
+  <testcase name="test1" classname="org.gradle.PersonTest" time="0.011"/>
+  <testcase name="test2" classname="org.gradle.PersonTest" time="0.0"/>
+  <system-out><![CDATA[==> test1
+==> test2
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

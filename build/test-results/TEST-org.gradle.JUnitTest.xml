@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.gradle.JUnitTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2015-12-03T22:21:36" hostname="yes4me" time="0.014">
+  <properties/>
+  <testcase name="test1" classname="org.gradle.JUnitTest" time="0.012"/>
+  <testcase name="test2" classname="org.gradle.JUnitTest" time="0.001"/>
+  <system-out><![CDATA[==> test1
+==> test2
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,102 +1,50 @@
-/* ===========================================================================
-current version of Gradle: cmd> gradle -v
-create the gradle wrapper: cmd> gradle wrapper
-update the gradle and the project to the latest version: cmd> gradlew
+apply plugin: 'java'
+apply plugin: 'eclipse'
 
-SOURCE: http://stackoverflow.com/questions/25063349/how-to-run-gradle-wrapper-on-windows-7 
-=========================================================================== */
-
-wrapper {
-    gradleVersion = '2.4'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
 }
-
-/* ===========================================================================
-gradle -Dtest.single=JUnitTest
-=========================================================================== */
-
-apply plugin: 'java'	//Adds Java config to .project. Generates .classpath and JDT settings file
-
-/* ---------------------------------------------------------------------------
-External source dependencies is...
-where Gradle searches for external JAR files, usually public Maven repository
---------------------------------------------------------------------------- */
 
 repositories {
-	mavenCentral()
-	//mavenLocal()		//for local repositories
-	//jcenter()			//for Android
+    flatDir {
+        dirs 'lib'
+    }
+    mavenCentral()
 }
-
-/* ---------------------------------------------------------------------------
-Dependencies names of library on the repositories in the format 'group:name:version'
-"compile"		= dependency for the directory "src/main/java"
-"testcompile"	= dependency for the directory "src/test/java"
-
-To find out about dependencies conflicts: cmd> gradle dependencies
-
-SOURCE: https://docs.gradle.org/current/userguide/artifact_dependencies_tutorial.html
-		http://mvnrepository.com/
---------------------------------------------------------------------------- */
 
 dependencies {
 	compile fileTree(dir: 'lib', include: ['*.jar'])
-	testCompile fileTree(dir: 'lib', include: ['*.jar'])
-
-	testCompile 'junit:junit:4.12'
-	testCompile 'org.testng:testng:6.9.6'
-	testCompile 'org.seleniumhq.selenium:selenium-java:2.45.0'
-	testCompile 'org.seleniumhq.selenium:selenium-chrome-driver:2.47.1'
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    compile group: 'junit', name: 'junit', version: '4.+'
+	compile 'org.testng:testng:6.9.6'
+	compile 'org.seleniumhq.selenium:selenium-java:2.48.2'
+	compile 'org.seleniumhq.selenium:selenium-server:2.48.2'
+	compile 'org.seleniumhq.selenium:selenium-chrome-driver:2.48.2'
+	compile 'org.seleniumhq.selenium:selenium-firefox-driver:2.48.2'
 }
 
-/* ---------------------------------------------------------------------------
-Custom the directories
---------------------------------------------------------------------------- */
-
-sourceSets {
-  main {
-    java {
-		srcDir 'src/main/java'		//Add specific directory as a source directory (do not add test directory)
-    }
-    resources {
-        srcDir 'src/main/resource'	//Add specific directory as a resource directory
-    }    
-  }
-}
-
-/* ---------------------------------------------------------------------------
-Definition: Gradle task =~ Ant targets
-"<<" operator is simply an alias for doLast (see "task hello")
-List all tasks: cmd>gradle tasks
-To run task: cmd>gradle -q <taskName>
-
-SOURCE: https://docs.gradle.org/current/userguide/tutorial_using_tasks.html
---------------------------------------------------------------------------- */
-
-task printDependencies << {
-	println "========== List all dependencies =========="
-    configurations.compile.each
-    {
-    	println it.name
-    }
-}
 task updateDependencies(type: Copy) {
-	println "========== Update all dependencies =========="
 	from configurations
 	into 'lib'
 }
-task zipDependencies(type: Zip) {
-    //destinationDir	= file('backup')//target folder "backup" (default if missing: build\distributions)
-    baseName = "dependencyArchive"		//target zip file name
-    from('lib')
+
+//To run the test from the command line, just run: gradle test
+test {
+	useTestNG {
+		suites 'testng.xml'
+	}
 }
 
 /* ---------------------------------------------------------------------------
-OTHERS
+Run: gradle -q <taskname>
 --------------------------------------------------------------------------- */
 
-task run(type: JavaExec) {
-	//run java program located ONLY in the "src/main/java"
-	println "========== Running Java program =========="
-    main = "org.gradle.Person"
-    classpath = sourceSets.main.runtimeClasspath
+task printDependencies << {
+    configurations.compile.each { println it.name }
 }

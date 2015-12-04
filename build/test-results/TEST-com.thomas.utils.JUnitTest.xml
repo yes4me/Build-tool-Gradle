@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.thomas.utils.JUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-09-24T00:48:01" hostname="yes4me" time="0.004">
-  <properties/>
-  <testcase name="testHello" classname="com.thomas.utils.JUnitTest" time="0.004"/>
-  <system-out><![CDATA[This is testHello
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

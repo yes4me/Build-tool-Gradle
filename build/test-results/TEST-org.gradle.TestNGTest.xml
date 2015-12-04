@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.gradle.TestNGTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2015-12-03T22:28:17" hostname="yes4me" time="0.015">
+  <properties/>
+  <testcase name="test11" classname="org.gradle.TestNGTest" time="0.005"/>
+  <testcase name="test12" classname="org.gradle.TestNGTest" time="0.0"/>
+  <testcase name="test21" classname="org.gradle.TestNGTest" time="0.001"/>
+  <testcase name="test22" classname="org.gradle.TestNGTest" time="0.0"/>
+  <testcase name="runFinal" classname="org.gradle.TestNGTest" time="0.0"/>
+  <system-out><![CDATA[TestGroup1 > group1.1
+TestGroup1 > group1.2
+TestGroup1 > group2.1
+TestGroup1 > group2.2
+TestGroup1 > group1 & group2
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
